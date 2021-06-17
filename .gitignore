@@ -136,3 +136,7 @@ dmypy.json
 *.zip
 *.rar
 test.py
+
+#Postgres
+postgres
+postgresql

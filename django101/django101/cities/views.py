@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect
 from django101.cities.models import Person
 
 
+def show_forms_demo(request):
+    return render(request, 'forms_demo.html')
+
+
 def index(req):
     context = {
         'name': 'Petko',

@@ -1,5 +1,7 @@
 from django.db import models
 
+from todos_app.todos.validators import validate_dot
+
 
 class Person(models.Model):
     name = models.CharField(
@@ -30,8 +32,11 @@ class Category(models.Model):
 
 
 class Todo(models.Model):
-    text = models.CharField(
+    title = models.CharField(
         max_length=30,
+        validators=[
+            validate_dot,
+        ]
     )
     state = models.BooleanField(
         default=False

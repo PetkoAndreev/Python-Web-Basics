@@ -7,8 +7,8 @@ from todos_app.todos.models.todo import Person, Category
 # Option 2 with decorator
 # @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ['text', 'owner']
-    sortable_by = ['text']
+    list_display = ['title', 'owner']
+    sortable_by = ['title']
     list_filter = ['owner']
 
     # def has_change_permission(self, request, obj=None):
