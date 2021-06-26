@@ -5,7 +5,7 @@ from expenses_tracker.expenses.forms import CreateExpenseForm, EditExpenseForm, 
 from expenses_tracker.expenses.models import Expense
 
 
-def home(requet):
+def home(request):
     profile = get_profile()
     if not profile:
         return redirect('create profile')
@@ -18,7 +18,7 @@ def home(requet):
         'budget_left': profile.budget_left,
     }
 
-    return render(requet, 'home-with-profile.html', context)
+    return render(request, 'home-with-profile.html', context)
 
 
 def create_expense(request):
