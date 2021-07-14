@@ -1,3 +1,7 @@
+import os
+from os.path import join
+
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -27,7 +31,10 @@ class Pet(models.Model):
     )
     age = models.PositiveIntegerField()
     description = models.TextField()
-    image_url = models.URLField()
+    # image_url = models.URLField()
+    image = models.ImageField(
+        upload_to='pets',
+    )
 
     # age = models.IntegerField(
     #     null=True,
@@ -38,9 +45,19 @@ class Pet(models.Model):
     #     ]
     # )
 
+    # Will be added after authentication lecture
+    # def save(self, force_insert=False, force_update=False, using=None,
+    #          update_fields=None):
+    #     db_pet = Pet.objects.get(pk=self.id)
+    #     # image_path = join(settings.MEDIA_ROOT, db_pet.image.url[len('/media/'):])
+    #     image_path = join(settings.MEDIA_ROOT, str(db_pet.image))
+    #     os.remove(image_path)
+    #     return super().save(force_insert=force_insert, force_update=force_update, using=using,
+    #                         update_fields=update_fields)
+
     # Display as one column with "," separator
-    # def __str__(self):
-    #     return f'{self.name}, {self.age}, {self.type}'
+    def __str__(self):
+        return f'{self.name}, {self.age}, {self.type}'
 
 
 class Like(models.Model):

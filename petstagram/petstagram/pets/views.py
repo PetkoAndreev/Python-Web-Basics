@@ -17,6 +17,7 @@ def list_pets(request):
 
     return render(request, 'pets/pet_list.html', context)
 
+
 class ListPetsView(ListView):
     template_name = 'pets/pet_list.html'
     model = Pet
@@ -71,7 +72,7 @@ def like_pet(request, pk):
 
 def create_pet(request):
     if request.method == 'POST':
-        form = PetForm(request.POST)
+        form = PetForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('list_pets')
@@ -88,7 +89,7 @@ def create_pet(request):
 def edit_pet(request, pk):
     pet = Pet.objects.get(pk=pk)
     if request.method == 'POST':
-        form = EditPetForm(request.POST, instance=pet)
+        form = EditPetForm(request.POST, request.FILES, instance=pet)
         if form.is_valid():
             form.save()
             return redirect('list_pets')
