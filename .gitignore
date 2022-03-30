@@ -84,6 +84,11 @@ ipython_config.py
 
 # pyenv
 .python-version
+pyenv.cfg
+pyvenv.cfg
+.idea/
+Scripts/
+scripts/
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -137,6 +142,10 @@ dmypy.json
 *.rar
 test.py
 
+
 #Postgres
 postgres
 postgresql
+
+#SQLLite
+*.sqlite3
